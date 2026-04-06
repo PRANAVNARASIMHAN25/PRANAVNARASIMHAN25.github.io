@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — Pranav Narasimhan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --surface: #13131a;
+      --card: #1a1a24;
+      --border: #2a2a3a;
+      --accent: #f5a623;
+      --accent2: #e87c3e;
+      --text: #e8e6f0;
+      --muted: #7a7890;
+      --highlight: #fff8ee;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    section { padding: 100px 60px; }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
+    }
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 700; line-height: 1.15;
+      color: var(--highlight); margin-bottom: 60px;
+    }
+    h2 em { font-style: italic; color: var(--accent); }
+
+    /* Buttons */
+    .btn-outline {
+      padding: 14px 32px;
+      background: transparent; color: var(--text);
+      font-weight: 500; font-size: 14px; letter-spacing: 0.04em;
+      border: 1px solid var(--border); border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* Projects */
+    #projects { background: var(--surface); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+    .project-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px;
+      position: relative; overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+      cursor: default;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .project-card:hover { transform: translateY(-6px); border-color: rgba(245,166,35,0.3); }
+    .project-card:hover::before { opacity: 1; }
+    .project-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px; font-weight: 900;
+      color: rgba(245,166,35,0.06);
+      position: absolute; top: 12px; right: 20px;
+      line-height: 1;
+    }
+    .project-domain {
+      font-size: 10px; font-family: 'DM Mono', monospace;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .project-title { font-size: 20px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+    .project-desc { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 20px; }
+    .project-metrics { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px; }
+    .metric { text-align: center; }
+    .metric-val { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--accent); }
+    .metric-key { font-size: 10px; color: var(--muted); font-family: 'DM Mono', monospace; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+
+    .tag {
+      font-size: 11px; font-family: 'DM Mono', monospace;
+      background: var(--card); border: 1px solid var(--border);
+      color: var(--muted); padding: 4px 10px; border-radius: 6px;
+    }
+
+    .project-detail-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-decoration: none;
+      font-size: 12px;
+      font-family: 'DM Mono', monospace;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      background: rgba(245,166,35,0.08);
+      border: 1px solid rgba(245,166,35,0.24);
+      padding: 10px 14px;
+      border-radius: 8px;
+      transition: transform 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .project-detail-link:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      section { padding: 80px 24px; }
+    }
+  </style>
+</head>
+<body>
+  <div style="margin-bottom: 32px;">
+    <a href="index.html#projects" class="btn-outline">← Back to Featured Projects</a>
+  </div>
+
+  <!-- Projects -->
+  <section id="projects">
+    <div class="section-label">// featured projects</div>
+    <h2>What I've <em>built</em></h2>
+
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-num">01</div>
+        <div class="project-domain">Marketplace · Product Strategy</div>
+        <div class="project-title">FoodSwift: Fulfillment Reliability &amp; Retention</div>
+        <div class="project-desc">Investigated decline in Orders/Month (3.2 → 2.8) and NPS (42 → 35). Ran root-cause analysis, validated hypotheses, and identified post-confirmation cancellations as a primary driver of silent churn. Proposed reliability-first interventions with wireframes and a metrics + guardrails framework.</div>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">3.2→2.8</div><div class="metric-key">Orders/Month</div></div>
+          <div class="metric"><div class="metric-val">42→35</div><div class="metric-key">NPS</div></div>
+          <div class="metric"><div class="metric-val">6</div><div class="metric-key">Slide Deck</div></div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">RCA</span><span class="tag">Metrics</span><span class="tag">Wireframes</span>
+        </div>
+        <a class="project-detail-link" href="project-detail.html?project=foodswift">View in Detail</a>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">02</div>
+        <div class="project-domain">Decision Science · Analytics</div>
+        <div class="project-title">Tripzy: Decision Intelligence for Travel Planning</div>
+        <div class="project-desc">Defined a decision-first travel recommendation platform using persona-based segmentation and hypothesis-driven experimentation to reduce choice overload and accelerate high-confidence booking decisions. Designed prescriptive workflows for curated choice architecture and group preference alignment.</div>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">Personas</div><div class="metric-key">Segmentation</div></div>
+          <div class="metric"><div class="metric-val">Experiments</div><div class="metric-key">Hypotheses</div></div>
+          <div class="metric"><div class="metric-val">Workflows</div><div class="metric-key">Prescriptive</div></div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Decision Design</span><span class="tag">Analytics</span><span class="tag">Experimentation</span>
+        </div>
+        <a class="project-detail-link" href="project-detail.html?project=tripzy">View in Detail</a>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">03</div>
+        <div class="project-domain">Campus · Product Roadmap</div>
+        <div class="project-title">Findster: Campus Lost &amp; Found App</div>
+        <div class="project-desc">Prototyped a student-focused lost &amp; found app with photo-based search, categories, and real-time alerts. Validated the problem via surveys and peer discussions, and presented a roadmap with scalable features like map-based tracking, resale of unclaimed items, and campus onboarding.</div>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">Prototype</div><div class="metric-key">MVP</div></div>
+          <div class="metric"><div class="metric-val">Research</div><div class="metric-key">Validation</div></div>
+          <div class="metric"><div class="metric-val">Roadmap</div><div class="metric-key">Scalable</div></div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Roadmapping</span><span class="tag">User Research</span><span class="tag">Product</span>
+        </div>
+        <a class="project-detail-link" href="project-detail.html?project=findster">View in Detail</a>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">04</div>
+        <div class="project-domain">Campus Ops · Product Optimization</div>
+        <div class="project-title">Library Seat &amp; Book Management System</div>
+        <div class="project-desc">Conducted user research to identify pain points in the library reservation flow, defined actionable product requirements, and analyzed feature adoption metrics to drive data-informed improvements. Collaborated cross-functionally to automate booking workflows and shape a campus-wide rollout strategy.</div>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">Research</div><div class="metric-key">Pain Points</div></div>
+          <div class="metric"><div class="metric-val">Metrics</div><div class="metric-key">Adoption</div></div>
+          <div class="metric"><div class="metric-val">Automation</div><div class="metric-key">Workflows</div></div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">User Research</span><span class="tag">Product Optimization</span><span class="tag">Rollout</span>
+        </div>
+        <a class="project-detail-link" href="project-detail.html?project=library-system">View in Detail</a>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-num">05</div>
+        <div class="project-domain">FMCG · GTM Strategy</div>
+        <div class="project-title">Biphasic Cosmetic Product</div>
+        <div class="project-desc">Performed market analysis to identify target segments and competitor positioning, then converted insights into product differentiation and brand strategy. Built a go-to-market plan across product development, distribution, and marketing to support sustainable growth and investor appeal.</div>
+        <div class="project-metrics">
+          <div class="metric"><div class="metric-val">Segments</div><div class="metric-key">Targeting</div></div>
+          <div class="metric"><div class="metric-val">GTM</div><div class="metric-key">Execution</div></div>
+          <div class="metric"><div class="metric-val">Brand</div><div class="metric-key">Positioning</div></div>
+        </div>
+        <div class="project-tags">
+          <span class="tag">Market Analysis</span><span class="tag">GTM</span><span class="tag">Strategy</span>
+        </div>
+        <a class="project-detail-link" href="project-detail.html?project=biphasic-cosmetic">View in Detail</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
+

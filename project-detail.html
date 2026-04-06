@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Detail</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0b0b0f;
+      --surface: #13131a;
+      --card: #1a1a24;
+      --border: #2a2a3a;
+      --accent: #f5a623;
+      --accent2: #e87c3e;
+      --text: #e8e6f0;
+      --muted: #7a7890;
+      --highlight: #fff8ee;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    .panel {
+      width: min(760px, 100%);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 5vw, 44px);
+      color: var(--highlight);
+      margin-bottom: 8px;
+      line-height: 1.1;
+    }
+
+    .sub {
+      color: var(--muted);
+      margin-bottom: 26px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .doc-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .doc-row {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(245,166,35,0.24);
+      background: rgba(245,166,35,0.08);
+      transition: transform 0.2s, border-color 0.2s, color 0.2s;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .doc-row:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .doc-row.secondary {
+      border-color: rgba(122,120,144,0.32);
+      background: rgba(122,120,144,0.08);
+      color: var(--muted);
+    }
+    .doc-row.secondary:hover {
+      color: var(--text);
+      border-color: var(--accent);
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+    }
+    .back:hover { color: var(--accent); }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <div class="eyebrow">// project documents</div>
+    <h1 id="projectName">Project</h1>
+    <p class="sub">Open detailed files for this project using the fields below.</p>
+
+    <div class="doc-grid">
+      <a id="prdLink" class="doc-row" href="#" target="_blank" rel="noopener">
+        <span>View PRD</span>
+        <span>Open ↗</span>
+      </a>
+      <a id="pptLink" class="doc-row" href="#" target="_blank" rel="noopener">
+        <span>View PPT</span>
+        <span>Open ↗</span>
+      </a>
+      <a id="prdDownloadLink" class="doc-row secondary" href="#" target="_blank" rel="noopener" download>
+        <span>Download PRD (Original)</span>
+        <span>Download ⬇</span>
+      </a>
+      <a id="pptDownloadLink" class="doc-row secondary" href="#" target="_blank" rel="noopener" download>
+        <span>Download PPT (Original)</span>
+        <span>Download ⬇</span>
+      </a>
+    </div>
+
+    <a class="back" href="portfolio.html">← Back to Portfolio</a>
+  </main>
+
+  <script>
+    const projectMap = {
+      foodswift: {
+        name: "FoodSwift: Fulfillment Reliability & Retention",
+        prdPreview: "docs/FoodSwift_PRD.pdf",
+        pptPreview: "docs/FoodSwift_PM_Slides.pdf",
+        prdDownload: "docs/FoodSwift_PRD.pdf",
+        pptDownload: "docs/FoodSwift_PM_Slides.pptx"
+      },
+      tripzy: {
+        name: "Tripzy: Decision Intelligence for Travel Planning",
+        prdPreview: "docs/Tripzy_PRD_Document.pdf",
+        pptPreview: "docs/Tripzy_PM_Slides.pdf",
+        prdDownload: "docs/Tripzy_PRD_Document.pdf",
+        pptDownload: "docs/Tripzy_PM_Slides.pptx"
+      },
+      findster: {
+        name: "Findster: Campus Lost & Found App",
+        prdPreview: "docs/Findster_Enhanced_PRD.pdf",
+        pptPreview: "docs/Findster_Enhanced_PPT.pdf",
+        prdDownload: "docs/Findster_Enhanced.docx",
+        pptDownload: "docs/Findster_Enhanced.pptx"
+      },
+      "library-system": {
+        name: "Library Seat & Book Management System",
+        prdPreview: "docs/LibSeat_PRD_Document.pdf",
+        pptPreview: "docs/LibSeat_PRD (1).pdf",
+        prdDownload: "docs/LibSeat_PRD_Document.pdf",
+        pptDownload: "docs/LibSeat_PRD (1).pptx"
+      },
+      "biphasic-cosmetic": {
+        name: "Biphasic Cosmetic Product",
+        prdPreview: "docs/Sylver_PRD_Final.pdf",
+        pptPreview: "docs/Sylver_PM_Slides.pdf",
+        prdDownload: "docs/Sylver_PRD_Final.pdf",
+        pptDownload: "docs/Sylver_PM_Portfolio.pptx"
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const key = params.get("project") || "foodswift";
+    const selected = projectMap[key] || projectMap.foodswift;
+    const prdPreview = selected.prdPreview || selected.prd || "#";
+    const pptPreview = selected.pptPreview || selected.ppt || "#";
+    const prdDownload = selected.prdDownload || selected.prd || "#";
+    const pptDownload = selected.pptDownload || selected.ppt || "#";
+
+    document.getElementById("projectName").textContent = selected.name;
+    document.getElementById("prdLink").href = prdPreview;
+    document.getElementById("pptLink").href = pptPreview;
+    document.getElementById("prdDownloadLink").href = prdDownload;
+    document.getElementById("pptDownloadLink").href = pptDownload;
+  </script>
+</body>
+</html>

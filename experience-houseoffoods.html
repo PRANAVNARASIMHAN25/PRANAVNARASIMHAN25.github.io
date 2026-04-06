@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>House Of Foods — Product Lead | Pranav Narasimhan</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <style>
+        :root {
+            --bg: #0b0b0f;
+            --surface: #13131a;
+            --card: #1a1a24;
+            --border: #2a2a3a;
+            --accent: #f5a623;
+            --accent2: #e87c3e;
+            --text: #e8e6f0;
+            --muted: #7a7890;
+            --highlight: #fff8ee;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* Nav bar */
+        .exp-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(11, 11, 15, 0.85);
+        }
+
+        .exp-nav a {
+            font-family: 'DM Mono', monospace;
+            font-size: 13px;
+            color: var(--accent);
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+
+        .exp-nav a:hover {
+            color: var(--accent2);
+        }
+
+        /* Hero section */
+        .exp-hero {
+            padding: 140px 60px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .exp-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 40% at 70% 50%, rgba(245, 166, 35, 0.06) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 50% at 20% 80%, rgba(232, 124, 62, 0.04) 0%, transparent 60%);
+            z-index: 0;
+        }
+
+        .exp-hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .exp-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: rgba(245, 166, 35, 0.08);
+            border: 1px solid rgba(245, 166, 35, 0.2);
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 24px;
+        }
+
+        .exp-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 5vw, 56px);
+            font-weight: 900;
+            color: var(--highlight);
+            line-height: 1.1;
+            margin-bottom: 8px;
+        }
+
+        .exp-hero h1 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .exp-company-name {
+            font-size: 18px;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .exp-company-name a {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px dashed rgba(245, 166, 35, 0.4);
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .exp-company-name a:hover {
+            color: var(--accent2);
+            border-bottom-color: var(--accent2);
+        }
+
+        .exp-website-link {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .exp-website-link:hover {
+            color: var(--accent);
+        }
+
+        .exp-meta {
+            font-family: 'DM Mono', monospace;
+            font-size: 12px;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+            margin-bottom: 28px;
+        }
+
+        .exp-hero-desc {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--muted);
+            max-width: 680px;
+        }
+
+        .exp-hero-desc strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* Metrics strip */
+        .metrics-strip {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            padding: 0 60px 60px;
+        }
+
+        .metric-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px 28px;
+            flex: 1;
+            min-width: 160px;
+            text-align: center;
+            transition: border-color 0.2s, transform 0.3s;
+        }
+
+        .metric-card:hover {
+            border-color: rgba(245, 166, 35, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .metric-val {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .metric-key {
+            font-size: 11px;
+            color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            letter-spacing: 0.06em;
+        }
+
+        /* Content sections */
+        .exp-section {
+            padding: 60px 60px;
+            max-width: 860px;
+        }
+
+        .exp-section:nth-child(even) {
+            background: var(--surface);
+            padding-left: 60px;
+            padding-right: 60px;
+            max-width: 100%;
+        }
+
+        .exp-section:nth-child(even) .exp-section-inner {
+            max-width: 800px;
+        }
+
+        .exp-section-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .exp-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 24px;
+            line-height: 1.15;
+        }
+
+        .exp-section h2 em {
+            font-style: italic;
+            color: var(--accent);
+        }
+
+        .exp-section p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: 16px;
+        }
+
+        .exp-section p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* Bullet list */
+        .exp-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+        .exp-bullets li {
+            position: relative;
+            padding-left: 24px;
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--muted);
+            margin-bottom: 14px;
+        }
+
+        .exp-bullets li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .exp-bullets li strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        /* Tags */
+        .exp-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 28px;
+        }
+
+        .exp-tag {
+            font-size: 12px;
+            font-family: 'DM Mono', monospace;
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            padding: 6px 14px;
+            border-radius: 8px;
+            transition: border-color 0.2s, color 0.2s, transform 0.2s;
+        }
+
+        .exp-tag:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Footer CTA */
+        .exp-footer {
+            padding: 60px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .exp-footer p {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 24px;
+        }
+
+        .btn-primary {
+            padding: 14px 32px;
+            background: var(--accent);
+            color: #0b0b0f;
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent2);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            padding: 14px 32px;
+            background: transparent;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.04em;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+            margin-left: 12px;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Scroll animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .exp-nav {
+                padding: 16px 24px;
+            }
+
+            .exp-hero {
+                padding: 120px 24px 40px;
+            }
+
+            .metrics-strip {
+                padding: 0 24px 40px;
+            }
+
+            .exp-section {
+                padding: 40px 24px;
+            }
+
+            .exp-section:nth-child(even) {
+                padding: 40px 24px;
+            }
+
+            .exp-footer {
+                padding: 40px 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Nav -->
+    <nav class="exp-nav">
+        <a href="portfolio.html#experience">← Back to Portfolio</a>
+    </nav>
+
+    <!-- Hero -->
+    <div class="exp-hero">
+        <div class="exp-hero-inner">
+            <div class="exp-badge">D2C · Product & Growth</div>
+            <h1>Product <em>Lead</em></h1>
+            <div class="exp-company-name"><a href="https://www.houseoffoods.in/" target="_blank" rel="noopener">House Of
+                    Foods</a></div>
+            <a href="https://www.houseoffoods.in/" target="_blank" rel="noopener" class="exp-website-link">🔗
+                www.houseoffoods.in ↗</a>
+            <div class="exp-meta">Jun – Dec 2025 &nbsp;·&nbsp; D2C &nbsp;·&nbsp; Product & Growth</div>
+            <p class="exp-hero-desc">
+                Pioneered <strong>end-to-end product strategy</strong> for a D2C food brand — defining user journey,
+                UI/UX, and core features to drive launch. Led data-driven growth initiatives that generated
+                <strong>₹1.2L+ revenue</strong> with a <strong>20% customer retention rate</strong> in just 60 days.
+            </p>
+        </div>
+    </div>
+
+    <!-- Metrics -->
+    <div class="metrics-strip reveal">
+        <div class="metric-card">
+            <div class="metric-val">₹1.2L+</div>
+            <div class="metric-key">Revenue Generated</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-val">20%</div>
+            <div class="metric-key">Customer Retention</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-val">60</div>
+            <div class="metric-key">Days to Results</div>
+        </div>
+        <div class="metric-card">
+            <div class="metric-val">E2E</div>
+            <div class="metric-key">Product Ownership</div>
+        </div>
+    </div>
+
+    <!-- What I Did -->
+    <div class="exp-section reveal">
+        <div class="exp-section-label">// what I did</div>
+        <h2>Key <em>Contributions</em></h2>
+        <ul class="exp-bullets">
+            <li>Pioneered <strong>end-to-end product strategy</strong> for a D2C food brand, defining the user journey,
+                UI/UX, and core features to drive launch.</li>
+            <li>Managed positioning within the <strong>mass-premium segment</strong> using unit economics for pricing
+                and a unique packaging design.</li>
+            <li>Led a <strong>data-driven product and growth initiative</strong> analyzing customer trends to optimize
+                the portfolio.</li>
+            <li>Generated <strong>₹1.2L+ revenue</strong> with a <strong>20% customer retention rate</strong> in just 60
+                days.</li>
+            <li>Defined and owned the <strong>website product experience</strong> — from information architecture to
+                conversion flows — at <a href="https://www.houseoffoods.in/" target="_blank" rel="noopener"
+                    style="color: var(--accent); text-decoration: none; border-bottom: 1px dashed rgba(245,166,35,0.4);">houseoffoods.in</a>.
+            </li>
+        </ul>
+    </div>
+
+    <!-- How I Approached It -->
+    <div class="exp-section reveal">
+        <div class="exp-section-inner">
+            <div class="exp-section-label">// approach</div>
+            <h2>How I <em>Approached</em> It</h2>
+            <p>
+                I owned the product from zero — there was no existing playbook. I started by defining the <strong>target
+                    persona</strong>, mapping the buyer journey, and identifying key decision points where the product
+                needed to create trust and urgency.
+            </p>
+            <p>
+                On the growth side, I used <strong>customer data and trend analysis</strong> to continuously refine the
+                product portfolio. This meant testing different positioning, price points, and packaging to find the
+                sweet spot between mass appeal and premium perception.
+            </p>
+            <p>
+                The website was treated as both a <strong>storefront and a growth lever</strong> — each page was
+                designed with conversion intent, supported by analytics to validate what was working and where users
+                were dropping off.
+            </p>
+        </div>
+    </div>
+
+    <!-- Tech stack -->
+    <div class="exp-section reveal">
+        <div class="exp-section-label">// tools & skills</div>
+        <h2>What I <em>Used</em></h2>
+        <div class="exp-tech-tags">
+            <span class="exp-tag">Figma</span>
+            <span class="exp-tag">Unit Economics</span>
+            <span class="exp-tag">Analytics</span>
+            <span class="exp-tag">Growth Strategy</span>
+            <span class="exp-tag">Customer Research</span>
+            <span class="exp-tag">UI/UX Design</span>
+            <span class="exp-tag">Product Roadmapping</span>
+            <span class="exp-tag">Data Analysis</span>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="exp-footer">
+        <p>Want to learn more about the House Of Foods product journey or discuss D2C growth?</p>
+        <a href="portfolio.html#experience" class="btn-primary">Back to Portfolio</a>
+        <a href="portfolio.html#contact" class="btn-outline">Get In Touch</a>
+    </div>
+
+    <script>
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => entry.target.classList.add('visible'), i * 100);
+                }
+            });
+        }, { threshold: 0.1 });
+        reveals.forEach(el => observer.observe(el));
+    </script>
+</body>
+
+</html>
