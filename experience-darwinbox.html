@@ -438,60 +438,74 @@
     <!-- Metrics -->
     <div class="metrics-strip reveal">
         <div class="metric-card">
-            <div class="metric-val">150+</div>
-            <div class="metric-key">Tickets Automated</div>
+            <div class="metric-val">80%</div>
+            <div class="metric-key">Reduction in Assignment Time</div>
         </div>
         <div class="metric-card">
-            <div class="metric-val">15</div>
-            <div class="metric-key">Users Routed</div>
+            <div class="metric-val">100s</div>
+            <div class="metric-key">Hours Reclaimed</div>
         </div>
         <div class="metric-card">
-            <div class="metric-val">4</div>
-            <div class="metric-key">Weeks Sprint</div>
+            <div class="metric-val">SLA</div>
+            <div class="metric-key">Compliance Improved</div>
         </div>
         <div class="metric-card">
-            <div class="metric-val">100%</div>
-            <div class="metric-key">Manual Triage Eliminated</div>
+            <div class="metric-val">Infinite</div>
+            <div class="metric-key">Pipeline Scalability</div>
         </div>
     </div>
 
-    <!-- What I Did -->
-    <div class="exp-section reveal">
-        <div class="exp-section-label">// what I did</div>
-        <h2>Key <em>Contributions</em></h2>
-        <ul class="exp-bullets">
-            <li>Designed and productionized a scalable <strong>ticket allocation engine</strong> integrating Jira REST
-                APIs with Darwinbox Automation Hub.</li>
-            <li>Implemented <strong>dynamic user-resolution logic</strong> (UserID ↔ Username mapping via lookup tables)
-                to ensure accurate assignment across systems.</li>
-            <li>Automated assignment of <strong>150+ tickets</strong> across 15 users over 4 weeks, eliminating manual
-                triage and establishing a reusable routing framework.</li>
-            <li>Built <strong>event-driven workflow orchestration</strong> using API triggers and conditional decision
-                trees to reduce bottlenecks and improve SLA compliance.</li>
-            <li>Developed <strong>real-time webhook ingestion pipelines</strong> in Python for structured JSON
-                processing, authentication, validation, and cross-system synchronization.</li>
-        </ul>
-    </div>
-
-    <!-- How I Approached It -->
+    <!-- Section 1 -->
     <div class="exp-section reveal">
         <div class="exp-section-inner">
-            <div class="exp-section-label">// approach</div>
-            <h2>How I <em>Approached</em> It</h2>
-            <p>
-                I started by mapping the existing manual ticket triage workflow end-to-end — identifying where
-                bottlenecks occurred, which routing decisions were repetitive, and where human error was highest.
-            </p>
-            <p>
-                Rather than simply connecting Jira to Darwinbox, I designed a <strong>rule-based routing
-                    framework</strong> that could scale with changing team structures and priorities. The system uses
-                lookup tables for user resolution and conditional decision trees for smart routing.
-            </p>
-            <p>
-                I worked closely with the support and engineering teams in <strong>agile sprints</strong>, iterating on
-                the routing logic and SLA thresholds to ensure the system handled edge cases while being maintainable
-                for non-technical stakeholders.
-            </p>
+            <div class="exp-section-label">// execution 01</div>
+            <h2>Ticket Routing <em>Automation</em></h2>
+            
+            <div style="background: rgba(245,166,35,0.04); border: 1px solid rgba(245,166,35,0.12); border-radius: 10px; padding: 16px 20px; margin-bottom: 24px;">
+              <h3 style="font-size: 11px; font-family: 'DM Mono', monospace; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px;">– Problem</h3>
+              <p style="margin-bottom: 0;">Manual ticket triaging caused severe SLA delays, uneven workload distribution, and blocked support velocity.</p>
+            </div>
+
+            <h3 style="font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 12px;">What I Did</h3>
+            <ul class="exp-bullets">
+                <li><strong>Architected an automated assignment engine</strong> integrating Jira APIs with internal automation hubs.</li>
+                <li><strong>Built event-driven decision trees</strong> to dynamically route tickets based on team capacity and priority.</li>
+                <li><strong>Standardized user-resolution logic</strong> to completely eliminate manual handoffs and routing errors.</li>
+            </ul>
+
+            <h3 style="font-size: 16px; font-weight: 600; color: var(--text); margin-top: 24px; margin-bottom: 12px;">Impact</h3>
+            <ul class="exp-bullets">
+                <li><strong>Slashed assignment processing time by 80%.</strong></li>
+                <li><strong>Eliminated manual triaging bottlenecks entirely</strong> for 15+ analysts.</li>
+                <li><strong>Drastically improved SLA compliance</strong> and overall resolution speed.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Section 2 -->
+    <div class="exp-section reveal">
+        <div class="exp-section-inner">
+            <div class="exp-section-label">// execution 02</div>
+            <h2>Custom Go-To-Market <em>Agents</em></h2>
+
+            <div style="background: rgba(245,166,35,0.04); border: 1px solid rgba(245,166,35,0.12); border-radius: 10px; padding: 16px 20px; margin-bottom: 24px;">
+              <h3 style="font-size: 11px; font-family: 'DM Mono', monospace; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 8px;">– Problem</h3>
+              <p style="margin-bottom: 0;">Sales and Pre-sales teams lost critical operational bandwidth handling repetitive, administrative inquiries.</p>
+            </div>
+
+            <h3 style="font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 12px;">What I Did</h3>
+            <ul class="exp-bullets">
+                <li><strong>Designed specialized automation agents</strong> tailored exactly to Sales and Pre-sales operational workflows.</li>
+                <li><strong>Mapped context-aware business logic</strong> to dynamically resolve and route complex internal queries.</li>
+                <li><strong>Led cross-functional deployment</strong> to natively embed these agents into the existing SaaS ecosystem.</li>
+            </ul>
+
+            <h3 style="font-size: 16px; font-weight: 600; color: var(--text); margin-top: 24px; margin-bottom: 12px;">Impact</h3>
+            <ul class="exp-bullets">
+                <li><strong>Reclaimed hundreds of hours</strong> of high-value GTM bandwidth for revenue-generating teams.</li>
+                <li><strong>Accelerated internal response times</strong> for deal-critical information requests.</li>
+                <li><strong>Scaled internal support securely</strong> without requiring additional operational headcount.</li>
+            </ul>
         </div>
     </div>
 
