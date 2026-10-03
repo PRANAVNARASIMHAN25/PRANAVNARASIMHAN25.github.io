@@ -4,7 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pranav Narasimhan — Product Analyst</title>
+  <title>Product Builder · Product Analyst @ Darwinbox · BITS Pilani '26</title>
+  <meta name="description" content="Pranav Narasimhan is a Product Analyst at Darwinbox and BITS Pilani '26 student who takes ambiguous problems to shipped products and measures the result." />
+  <link rel="canonical" href="https://pranavnarasimhan25.github.io/portfolio.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Pranav Narasimhan · Product Builder" />
+  <meta property="og:description" content="Product Analyst at Darwinbox · BITS Pilani '26" />
+  <meta property="og:url" content="https://pranavnarasimhan25.github.io/portfolio.html" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap"
     rel="stylesheet" />
@@ -17,7 +24,7 @@
       --accent: #f5a623;
       --accent2: #e87c3e;
       --text: #e8e6f0;
-      --muted: #7a7890;
+      --muted: #a8a5b9;
       --highlight: #fff8ee;
       --nav-bg: rgba(11, 11, 15, 0.85);
       --nav-border: rgba(255, 255, 255, 0.04);
@@ -295,7 +302,9 @@
       right: 60px;
       top: 50%;
       transform: translateY(-50%);
-      display: none;
+      display: grid;
+      gap: 12px;
+      width: 260px;
     }
 
     .stat-card {
@@ -328,6 +337,19 @@
       margin-top: 4px;
       letter-spacing: 0.06em;
     }
+
+    .hero-current {
+      display: block;
+      margin: 4px 0 0;
+      font-size: 11px;
+      line-height: 1.5;
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .hero-current:hover { color: var(--accent); }
+
+    .hero-current-mobile { display: none; }
 
     /* Sections */
     section {
@@ -670,6 +692,16 @@
       margin-bottom: 20px;
     }
 
+    .project-case-label { margin-bottom: 18px; }
+    .project-insight, .project-decision {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 10px 0;
+    }
+    .project-insight strong, .project-decision strong { color: var(--text); }
+    .project-card.compact { padding-bottom: 24px; }
+
     .project-detail-link {
       display: inline-flex;
       align-items: center;
@@ -874,6 +906,12 @@
         display: none;
       }
 
+      .hero-current-mobile {
+        display: inline-block;
+        margin-top: 20px;
+        font-size: 12px;
+      }
+
       .about-grid {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -883,6 +921,13 @@
         margin: -18px auto 34px;
         font-size: 15px;
       }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 14px 16px; }
+      .nav-links { gap: 10px; }
+      .nav-links a { font-size: 11px; letter-spacing: 0; }
+      .theme-toggle { left: auto; right: 16px; transform: none; }
     }
 
     /* ── Experience: structured format ── */
@@ -939,6 +984,25 @@
       margin-top: 3px;
       letter-spacing: 0.04em;
     }
+    .exp-project-card {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+    }
+    .exp-project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    .exp-project-name { font-family: 'Playfair Display', serif; font-size: 26px; color: var(--text); line-height: 1.15; }
+    .exp-phase { color: var(--accent); font: 10px 'DM Mono', monospace; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+    .exp-outcome, .exp-status { margin-top: 14px; font-size: 14px; color: var(--muted); }
+    .exp-outcome strong, .exp-status strong { color: var(--text); }
+    @media (max-width: 600px) { .exp-project-card { padding: 20px; } .exp-project-header { flex-direction: column; gap: 6px; } }
 
     /* ── Signature project card ── */
     .signature-banner {
@@ -1196,33 +1260,32 @@
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
     <div class="hero-content">
-      <div class="hero-tag"><span></span> Product Analyst @ Darwinbox · BITS Pilani '26</div>
+      <div class="hero-tag"><span></span> Product Builder · Product Analyst @ Darwinbox · BITS Pilani '26</div>
       <h1>Pranav <em>Narasimhan</em></h1>
-      <h1 style="font-size:clamp(28px,4vw,52px); font-weight:700; color:var(--muted); margin-top:4px;">Product Analyst
-      </h1>
       <p class="hero-subtitle">
-        Product analyst with hands-on experience building <strong>automation pipelines, AI agents, and API integrations</strong> at scale.
-        Combines technical depth with product thinking — translating ambiguous, high-stakes problems into shipped solutions with measurable outcomes. Comfortable owning <strong>0→1 work</strong> across cross-functional, fast-moving environments.
+        I take ambiguous problems to shipped products and measure the result.
       </p>
       <div class="hero-cta">
-        <a href="#projects" class="btn-primary">View My Work</a>
-        <a href="#contact" class="btn-outline">Get In Touch</a>
+        <a href="spotlight.html" class="btn-primary">See Spotlight case study</a>
+        <a href="Pranav_N_Resume.pdf" class="btn-outline" download>Download resume</a>
       </div>
+      <a class="hero-current hero-current-mobile" href="custom-objects.html">Currently: sole PM building Custom Objects at Darwinbox, from use case to client onboarding. →</a>
     </div>
 
     <div class="hero-stats">
       <div class="stat-card">
-        <div class="stat-num">0→1</div>
-        <div class="stat-label">Spotlight Launch</div>
+        <div class="stat-num">Spotlight</div>
+        <div class="stat-label">~1,000 in-product guides replaced in-house</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">150+</div>
-        <div class="stat-label">Tickets Routed</div>
+        <div class="stat-num">Ticket routing</div>
+        <div class="stat-label">80% faster assignment</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">15+</div>
-        <div class="stat-label">AI Agent Clients</div>
+        <div class="stat-num">AI agents</div>
+        <div class="stat-label">15+ clients, 8+ industries</div>
       </div>
+      <a class="hero-current" href="custom-objects.html">Currently: sole PM building Custom Objects at Darwinbox, from use case to client onboarding. →</a>
     </div>
   </section>
 
@@ -1275,85 +1338,53 @@
     <div class="section-label">// work experience</div>
     <h2>Where I've <em>learned</em></h2>
     <div class="timeline">
-
-      <div class="exp-item">
-        <div class="exp-dot active"></div>
-        <div class="exp-date">Jan 2026 – Present</div>
-        <div class="exp-content">
-          <div class="exp-role">Product Analyst – AI &amp; Studio</div>
-          <div class="exp-company">Darwinbox Digital Solutions</div>
-          <div class="exp-type">Full-Time (Jun 2026–Present) · Internship (Jan–Jun 2026) · SaaS · AI &amp; Automation</div>
-
-          <!-- Spotlight (Full-Time) -->
-          <div style="font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: 0.1em; margin-top: 16px; margin-bottom: 12px; text-transform: uppercase;">// Spotlight — 0→1 Platform <span style="color: var(--muted); font-size: 10px;">(Full-Time)</span></div>
-          <div class="exp-problem-block">
-            <div class="exp-block-label" style="color: var(--muted); letter-spacing: 0.1em;">– Problem</div>
-            <div class="exp-block-text">Darwinbox relied on a recurring third-party analytics vendor (Pendo) for in-product guidance — creating cost overhead and limited control.</div>
-          </div>
-          <div class="exp-block-label" style="margin-bottom:8px;">// What I Did</div>
-          <ul class="exp-actions-list">
-            <li><strong>Owned 0→1 development of Spotlight</strong>, an internally-built Pendo replacement — coordinated a small cross-functional team from problem definition through launch.</li>
-            <li><strong>Delivered full feature parity</strong> and eliminated a recurring third-party vendor dependency to drive infrastructure cost reduction.</li>
-          </ul>
-
-          <!-- Ticket Routing (Intern) -->
-          <div style="font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: 0.1em; margin-top: 32px; margin-bottom: 12px; text-transform: uppercase;">// Ticket Routing Automation <span style="color: var(--muted); font-size: 10px;">(Internship)</span></div>
-          <div class="exp-problem-block">
-            <div class="exp-block-label" style="color: var(--muted); letter-spacing: 0.1em;">– Problem</div>
-            <div class="exp-block-text">Manual ticket triaging caused SLA delays, uneven workload distribution, and blocked support velocity.</div>
-          </div>
-          <div class="exp-block-label" style="margin-bottom:8px;">// What I Did</div>
-          <ul class="exp-actions-list">
-            <li><strong>Architected an automated ticket allocation engine</strong> integrating Jira APIs with Darwinbox Automation Hub — routing 150+ tickets across module-specific queues for 15 users.</li>
-            <li><strong>Built a reusable routing framework</strong> adopted across multiple workflows.</li>
-          </ul>
-          <div class="exp-block-label" style="margin-bottom:8px;">// Impact</div>
-          <ul class="exp-actions-list">
-            <li><strong>Cut assignment time by 80%</strong> and established a scalable, reusable routing framework.</li>
-          </ul>
-
-          <!-- Webhook Pipeline (Intern) -->
-          <div style="font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: 0.1em; margin-top: 32px; margin-bottom: 12px; text-transform: uppercase;">// Verification Webhook Pipeline <span style="color: var(--muted); font-size: 10px;">(Internship)</span></div>
-          <div class="exp-problem-block">
-            <div class="exp-block-label" style="color: var(--muted); letter-spacing: 0.1em;">– Problem</div>
-            <div class="exp-block-text">Verified background-check data from third-party platforms required manual re-entry into employee profiles.</div>
-          </div>
-          <div class="exp-block-label" style="margin-bottom:8px;">// What I Did</div>
-          <ul class="exp-actions-list">
-            <li><strong>Built a real-time webhook ingestion pipeline</strong> to auto-propagate verified data from third-party background verification platforms directly into Darwinbox employee profiles.</li>
-            <li><strong>Reduced manual re-entry to zero</strong> across 3 integrated workflows.</li>
-          </ul>
-
-          <!-- AI Agents (Intern) -->
-          <div style="font-family: 'DM Mono', monospace; font-size: 12px; color: var(--accent); letter-spacing: 0.1em; margin-top: 32px; margin-bottom: 12px; text-transform: uppercase;">// AI Agents &amp; GTM Automation <span style="color: var(--muted); font-size: 10px;">(Internship)</span></div>
-          <div class="exp-problem-block">
-            <div class="exp-block-label" style="color: var(--muted); letter-spacing: 0.1em;">– Problem</div>
-            <div class="exp-block-text">Teams lost operational bandwidth on repetitive knowledge, GTM, and internal query workflows.</div>
-          </div>
-          <div class="exp-block-label" style="margin-bottom:8px;">// What I Did</div>
-          <ul class="exp-actions-list">
-            <li><strong>Deployed AI agents on Darwinbox</strong> for knowledge management, GTM support, and internal query resolution across 8+ industries and 15+ clients.</li>
-            <li><strong>Extended the system as a Slack-integrated Superagent</strong> with a Claude-powered context graph for Studio.</li>
-          </ul>
-          <div class="exp-block-label" style="margin-bottom:8px;">// Impact</div>
-          <ul class="exp-actions-list" style="margin-bottom: 32px;">
-            <li><strong>Reclaimed hundreds of operational hours</strong> across <strong>8+ industries</strong> and <strong>15+ clients</strong>.</li>
-          </ul>
-
-          <div class="exp-tags">
-            <span class="tag">Python</span>
-            <span class="tag">REST APIs</span>
-            <span class="tag">Webhooks</span>
-            <span class="tag">SQL</span>
-            <span class="tag">AI Agents</span>
-            <span class="tag">Jira APIs</span>
-            <span class="tag">ETL Pipelines</span>
-            <span class="tag">Agile</span>
-          </div>
+      <article class="exp-item">
+        <div class="exp-dot active"></div><div class="exp-date">Current</div>
+        <div class="exp-content exp-project-card">
+          <div class="exp-project-header"><div><div class="exp-project-name">Custom Objects</div><div class="exp-company">Darwinbox Digital Solutions</div></div><div class="exp-phase">Phase: [FILL: Full-time or Internship]</div></div>
+          <div class="exp-problem-block"><div class="exp-block-text">Problem: [FILL: customer configuration limit and current workaround]</div></div>
+          <ul class="exp-actions-list"><li>Define the use case and scope the product as the only PM.</li><li>Onboard clients myself.</li></ul>
+          <div class="exp-status"><strong>Status:</strong> Current · In progress</div>
+          <a class="project-detail-link" href="custom-objects.html">Read the Custom Objects case study</a>
         </div>
-      </div>
-
-
+      </article>
+      <article class="exp-item">
+        <div class="exp-dot"></div><div class="exp-date">Darwinbox</div>
+        <div class="exp-content exp-project-card">
+          <div class="exp-project-header"><div><div class="exp-project-name">Spotlight</div><div class="exp-company">Darwinbox Digital Solutions</div></div><div class="exp-phase">Phase: [FILL: Full-time or Internship]</div></div>
+          <div class="exp-problem-block"><div class="exp-block-text">Problem: Vendor cost and limited control over in-product guidance.</div></div>
+          <ul class="exp-actions-list"><li>Led product and built the in-house guide-creation module.</li><li>Shipped tooltips, walkthroughs, and banners.</li></ul>
+          <div class="exp-outcome"><strong>Outcome:</strong> ~1,000 in-product guides replaced in-house.</div>
+          <a class="project-detail-link" href="spotlight.html">Read the Spotlight case study</a>
+        </div>
+      </article>
+      <article class="exp-item">
+        <div class="exp-dot"></div><div class="exp-date">Darwinbox</div>
+        <div class="exp-content exp-project-card">
+          <div class="exp-project-header"><div><div class="exp-project-name">AI Agents / Superagent</div><div class="exp-company">Darwinbox Digital Solutions</div></div><div class="exp-phase">Phase: [FILL: Full-time or Internship]</div></div>
+          <div class="exp-problem-block"><div class="exp-block-text">Problem: Teams lost time to repeat knowledge, GTM, and internal query work.</div></div>
+          <ul class="exp-actions-list"><li>Built AI agents for knowledge management, GTM support, and internal queries.</li><li>Shipped Superagent for Slack, WhatsApp, and Microsoft Teams.</li></ul>
+          <div class="exp-outcome"><strong>Outcome:</strong> 15+ clients across 8+ industries.</div>
+        </div>
+      </article>
+      <article class="exp-item">
+        <div class="exp-dot"></div><div class="exp-date">Darwinbox</div>
+        <div class="exp-content exp-project-card">
+          <div class="exp-project-header"><div><div class="exp-project-name">Ticket Routing</div><div class="exp-company">Darwinbox Digital Solutions</div></div><div class="exp-phase">Phase: [FILL: Full-time or Internship]</div></div>
+          <div class="exp-problem-block"><div class="exp-block-text">Problem: Manual ticket triage delayed assignment and created uneven workloads.</div></div>
+          <ul class="exp-actions-list"><li>Built automated ticket allocation with Jira APIs and Darwinbox Automation Hub.</li><li>Built a reusable routing framework.</li></ul>
+          <div class="exp-outcome"><strong>Outcome:</strong> Cut assignment time by 80%.</div>
+        </div>
+      </article>
+      <article class="exp-item">
+        <div class="exp-dot"></div><div class="exp-date">Darwinbox</div>
+        <div class="exp-content exp-project-card">
+          <div class="exp-project-header"><div><div class="exp-project-name">Verification Webhook</div><div class="exp-company">Darwinbox Digital Solutions</div></div><div class="exp-phase">Phase: [FILL: Full-time or Internship]</div></div>
+          <div class="exp-problem-block"><div class="exp-block-text">Problem: Verified background-check data needed manual re-entry into employee profiles.</div></div>
+          <ul class="exp-actions-list"><li>Built a real-time webhook pipeline for verified data.</li><li>Sent data into Darwinbox employee profiles.</li></ul>
+          <div class="exp-outcome"><strong>Outcome:</strong> [FILL: verified outcome]</div>
+        </div>
+      </article>
     </div>
   </section>
 
@@ -1365,82 +1396,31 @@
 
       <div class="project-card reveal">
         <div class="project-num">01</div>
-        <div class="project-domain">Marketplace · Product Strategy</div>
-        <div class="project-title">FoodSwift: Fulfillment Reliability &amp; Retention</div>
-        <div class="project-desc">Investigated decline in Orders/Month (3.2 → 2.8) and NPS (42 → 35). Ran root-cause
-          analysis, validated hypotheses, and identified post-confirmation cancellations as a primary driver of silent
-          churn. Proposed reliability-first interventions with wireframes and a metrics + guardrails framework.</div>
-        <div class="project-metrics">
-          <div class="metric">
-            <div class="metric-val">3.2→2.8</div>
-            <div class="metric-key">Orders/Month</div>
-          </div>
-          <div class="metric">
-            <div class="metric-val">42→35</div>
-            <div class="metric-key">NPS</div>
-          </div>
-          <div class="metric">
-            <div class="metric-val">6</div>
-            <div class="metric-key">Slide Deck</div>
-          </div>
-        </div>
-        <div class="project-tags">
-          <span class="tag">RCA</span><span class="tag">Metrics</span><span class="tag">Wireframes</span>
-        </div>
-        <a class="project-detail-link" href="project-detail.html?project=foodswift">View in Detail</a>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-num">02</div>
         <div class="project-domain">Decision Science · Analytics</div>
         <div class="project-title">Tripzy: Decision Intelligence for Travel Planning</div>
-        <div class="project-desc">Defined a decision-first travel recommendation platform using persona-based
-          segmentation and hypothesis-driven experimentation to reduce choice overload and accelerate high-confidence
-          booking decisions. Designed prescriptive workflows for curated choice architecture and group preference
-          alignment.</div>
-        <div class="project-metrics">
-          <div class="metric">
-            <div class="metric-val">Personas</div>
-            <div class="metric-key">Segmentation</div>
-          </div>
-          <div class="metric">
-            <div class="metric-val">Experiments</div>
-            <div class="metric-key">Hypotheses</div>
-          </div>
-          <div class="metric">
-            <div class="metric-val">Workflows</div>
-            <div class="metric-key">Prescriptive</div>
-          </div>
-        </div>
-        <div class="project-tags">
-          <span class="tag">Decision Design</span><span class="tag">Analytics</span><span
-            class="tag">Experimentation</span>
-        </div>
+        <span class="tag project-case-label">Self-initiated case study</span>
+        <p class="project-insight"><strong>Key insight:</strong> Users spend 3–7 hours across 5+ platforms before choosing a destination, and group coordination adds 3–5 days.</p>
+        <p class="project-decision"><strong>Decision I made:</strong> Limit curated options to exactly 3; no on-platform booking in the MVP.</p>
         <a class="project-detail-link" href="project-detail.html?project=tripzy">View in Detail</a>
       </div>
 
       <div class="project-card reveal">
+        <div class="project-num">02</div>
+        <div class="project-domain">Marketplace · Product Strategy</div>
+        <div class="project-title">FoodSwift: Fulfillment Reliability &amp; Retention</div>
+        <span class="tag project-case-label">Self-initiated case study</span>
+        <p class="project-insight"><strong>Key insight:</strong> Orders/Month fell from 3.2 to 2.8 and NPS from 42 to 35; post-confirmation cancellations drive silent churn.</p>
+        <p class="project-decision"><strong>Decision I made:</strong> [FILL: the one intervention I’d prioritize and why].</p>
+        <a class="project-detail-link" href="project-detail.html?project=foodswift">View in Detail</a>
+      </div>
+
+      <div class="project-card compact reveal">
         <div class="project-num">03</div>
         <div class="project-domain">Campus · Product Roadmap &amp; Market Validation</div>
         <div class="project-title">Finds: Campus Lost &amp; Found App</div>
-        <div class="project-desc">Conceptualized and prototyped a student-focused lost &amp; found platform with photo-based search, categories, and real-time alerts. Validated through <strong>30+ surveys</strong> and <strong>8 peer interviews</strong> to identify pain points and iteratively refine core features. Pitched a roadmap featuring map-based tracking, resale of unclaimed items, and campus onboarding.</div>
-        <div class="project-metrics">
-          <div class="metric">
-            <div class="metric-val">30+</div>
-            <div class="metric-key">Surveys</div>
-          </div>
-          <div class="metric">
-            <div class="metric-val">8</div>
-            <div class="metric-key">Interviews</div>
-          </div>
-          <div class="metric">
-            <div class="metric-val">Roadmap</div>
-            <div class="metric-key">Scalable</div>
-          </div>
-        </div>
-        <div class="project-tags">
-          <span class="tag">Roadmapping</span><span class="tag">User Research</span><span class="tag">Market Validation</span>
-        </div>
+        <span class="tag project-case-label">Self-initiated case study</span>
+        <p class="project-insight"><strong>Key insight:</strong> Research included 30+ surveys and 8 interviews.</p>
+        <p class="project-decision"><strong>Decision I made:</strong> [FILL: the first feature or scope decision and why].</p>
         <a class="project-detail-link" href="project-detail.html?project=findster">View in Detail</a>
       </div>
 
@@ -1452,51 +1432,33 @@
 
   <!-- Skills -->
   <section id="skills">
-    <div class="section-label">// tools & skills</div>
-    <h2>How I <em>Build Products</em></h2>
-    <p class="skills-intro">I focus on using the right tools to solve the right problems — not just knowing them.</p>
+    <div class="section-label">// how I work</div>
+    <h2>How I <em>work</em></h2>
     <div class="skills-grid">
       <div class="skill-group reveal">
-        <div class="skill-group-title">Engineering &amp; Integration</div>
+        <div class="skill-group-title">Product</div>
+        <div class="skill-chips">
+          <span class="tag">Problem decomposition</span>
+          <span class="tag">Metrics &amp; guardrails</span>
+          <span class="tag">PRDs/specs</span>
+          <span class="tag">User research</span>
+        </div>
+      </div>
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Technical</div>
         <div class="skill-chips">
           <span class="tag">Python</span>
           <span class="tag">SQL</span>
           <span class="tag">REST APIs</span>
           <span class="tag">Webhooks</span>
-          <span class="tag">Jira APIs</span>
-          <span class="tag">ETL Pipelines</span>
-          <span class="tag">Event-driven Workflows</span>
-          <span class="tag">No-Code / Low-Code Automation</span>
         </div>
       </div>
       <div class="skill-group reveal">
-        <div class="skill-group-title">Data &amp; Analytics</div>
+        <div class="skill-group-title">Tools</div>
         <div class="skill-chips">
-          <span class="tag">Pendo</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">Power BI</span>
-          <span class="tag">Excel</span>
-          <span class="tag">Funnel Analysis</span>
-          <span class="tag">Metrics Frameworks</span>
-          <span class="tag">Business Analytics</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-group-title">Tools &amp; Platforms</div>
-        <div class="skill-chips">
-          <span class="tag">Darwinbox Automation Hub</span>
           <span class="tag">Figma</span>
-          <span class="tag">Agile &amp; Scrum</span>
-          <span class="tag">PRDs &amp; Technical Specs</span>
-        </div>
-      </div>
-      <div class="skill-group reveal">
-        <div class="skill-group-title">Soft Skills</div>
-        <div class="skill-chips">
-          <span class="tag">Client Stakeholder Management</span>
-          <span class="tag">Problem Decomposition</span>
-          <span class="tag">Cross-functional Execution</span>
-          <span class="tag">Business Acumen</span>
+          <span class="tag">Jira</span>
+          <span class="tag">Power BI</span>
         </div>
       </div>
     </div>
@@ -1507,7 +1469,7 @@
     <div class="section-label">// say hello</div>
     <h2>Let's <em>connect</em></h2>
     <p class="contact-sub">
-      Open to product analyst roles and collaborations. Reach out for automation, AI, or product strategy conversations.
+      Open to Associate Product Manager roles.
     </p>
     <div class="contact-links">
       <a href="mailto:pranav.n2535@gmail.com" class="contact-link">
