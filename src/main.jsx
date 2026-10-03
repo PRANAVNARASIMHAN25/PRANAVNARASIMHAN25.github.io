@@ -75,9 +75,10 @@ function App() {
   const path = window.location.pathname;
   const isSpotlight = path.endsWith('/spotlight.html') || params.get('page') === 'spotlight';
   const project = params.get('project');
+  const isProject = params.get('page') === 'project' || Boolean(project);
   useEffect(() => {
     if (!isSpotlight && params.get('section') === 'projects') requestAnimationFrame(() => document.getElementById('projects')?.scrollIntoView());
   }, [isSpotlight, params]);
-  return isSpotlight ? <Spotlight/> : project ? <ProjectDetail project={project}/> : <Home/>;
+  return isSpotlight ? <Spotlight/> : isProject ? <ProjectDetail project={project || 'tripzy'}/> : <Home/>;
 }
 createRoot(document.getElementById('root')).render(<App/>);
