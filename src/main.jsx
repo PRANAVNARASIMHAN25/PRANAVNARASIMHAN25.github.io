@@ -4,7 +4,7 @@ import { ArrowUpRight, Check, Download, Mail, Menu, Moon, Phone, Sun, Trophy, X 
 import './styles.css';
 
 const awardText = 'Team Excellence Award · Darwinbox';
-const nav = [['About', '#about'], ['Experience', '#experience'], ['Projects', '#projects'], ['Skills', '#skills'], ['Contact', '#contact']];
+const nav = [['Work', '#experience'], ['Cases', '#projects'], ['About', '#about'], ['Resume', '/resume'], ['Contact', '#contact']];
 
 function useTheme() {
   const [light, setLight] = useState(() => localStorage.getItem('portfolio-theme') === 'light');
@@ -29,7 +29,7 @@ function Shell({ children, caseStudy = false }) {
 
 function Hero() {
   const stats = [['Six-figure annual savings', '~1,000 guides replaced in-house'], ['Ticket routing', '~3 hours → a few minutes'], ['AI agents', '15+ clients · 8+ industries · 192 QA cases · ~95.8% pass']];
-  return <section className="hero container" id="hero"><div className="hero-copy"><Badge accent>Product Builder · Product Analyst @ Darwinbox · BITS Pilani '26</Badge><h1>Pranav <em>Narasimhan</em></h1><p className="hero-lede">I take ambiguous problems to shipped products and measure the result.</p><div className="hero-actions"><a className="btn btn-primary" href="/spotlight.html">See Spotlight case study <ArrowUpRight size={16}/></a><a className="btn btn-secondary" href="/Pranav_N_Resume.pdf" download>Download resume <Download size={16}/></a></div><a className="current-link" href="/custom-objects.html">Currently: sole PM building Custom Objects at Darwinbox, from use case to client onboarding. →</a></div><div className="hero-side"><div className="stats">{stats.map(([value, label]) => <div className="stat" key={label}><strong>{value}</strong><span>{label}</span></div>)}</div><div className="award"><Trophy size={14}/> {awardText}</div></div></section>;
+  return <section className="hero container" id="hero"><div className="hero-copy"><Badge accent>Product Builder · Product Analyst @ Darwinbox · BITS Pilani '26</Badge><h1>Product Analyst at Darwinbox. I ship <em>AI-native product.</em></h1><p className="hero-lede">I take ambiguous problems to shipped products and measure the result.</p><div className="hero-actions"><a className="btn btn-primary" href="/work/spotlight">View Spotlight case study <ArrowUpRight size={16}/></a><a className="btn btn-secondary" href="/Pranav_N_Resume.pdf" download>Download resume <Download size={16}/></a></div><a className="current-link" href="/custom-objects.html">Currently: sole PM building Custom Objects at Darwinbox, from use case to client onboarding. →</a></div><div className="hero-side"><div className="stats">{stats.map(([value, label]) => <div className="stat" key={label}><strong>{value}</strong><span>{label}</span></div>)}</div><div className="award"><Trophy size={14}/> {awardText}</div></div></section>;
 }
 
 const experiences = [
@@ -57,6 +57,14 @@ const projectDetails = {
 };
 function ProjectDetail({ project }) { const [title, domain, description, prd, slides] = projectDetails[project] || projectDetails.tripzy; return <Shell><main className="case-page container"><article className="case-content detail-page"><a className="text-link" href="/?section=projects">← Back to Featured Projects</a><span className="eyebrow">{domain}</span><h1>{title}</h1><Badge>Self-initiated case study</Badge><p className="hero-lede">{description}</p><div className="detail-links"><a className="btn btn-primary" href={`/${prd}`} target="_blank" rel="noreferrer">View PRD <ArrowUpRight size={16}/></a><a className="btn btn-secondary" href={`/${slides}`} target="_blank" rel="noreferrer">View slides <ArrowUpRight size={16}/></a></div></article></main><footer>© 2026 Pranav Narasimhan · Project detail</footer></Shell>; }
 
+const workPages = {
+  'ticket-routing': ['Ticket Routing', 'Shipped', 'Full-time', '150+ tickets across module-specific queues for 15 users', 'Manual assignment took about 3 hours; the shipped workflow reduced it to a few minutes.', 'Built allocation with Jira APIs and Darwinbox Automation Hub; shipped a reusable routing framework.'],
+  'ai-agents': ['AI Agents / Superagent', 'Shipped', 'Full-time · Superagent integration and context graph: Internship', 'Teams needed support for knowledge, GTM, and internal queries.', 'Built agents and shipped Superagent on Slack, WhatsApp, and Microsoft Teams for 15+ clients across 8+ industries.', 'QA covered 192 cases across WhatsApp and web at a ~95.8% pass rate.'],
+  'custom-objects': ['Custom Objects', 'In progress', 'Current · Full-time', 'Customers use spreadsheets or custom development for business-specific records.', 'I am the sole PM defining the use case, scoping the product, and preparing for client onboarding.', 'Internal discussions confirmed the current workaround; client conversations have not started.'],
+  'house-of-foods': ['House of Foods', 'Conceptual', 'Self-initiated case study', 'Product case study retained for review.', 'See the existing project material for context and decision framing.', 'No numeric outcome is stated here.']
+};
+function WorkPage({ slug }) { const [title, status, role, context, goal, solution] = workPages[slug] || workPages['ticket-routing']; return <Shell caseStudy><main className="case-page container"><div className="case-layout"><aside className="toc"><span className="eyebrow">On this page</span><a href="#context">Context</a><a href="#decision">Decision</a><a href="#results">Results</a></aside><article className="case-content"><Badge>{status}</Badge><h1>{title}</h1><p className="hero-lede">{context}</p><p><b>Role:</b> {role}</p><CaseSection id="context" n="01 — Context and user" title="Start with the user problem."><p>{context}</p><p>{goal}</p></CaseSection><CaseSection id="decision" n="02 — Options and trade-off" title="Choose the smallest useful release."><div className="decision-flow"><div>Problem<br/><small>{context}</small></div><i>→</i><div>Decision<br/><small>{solution}</small></div><i>→</i><div>Not built<br/><small>Broader scope was deferred until the first workflow could be validated.</small></div></div></CaseSection><CaseSection id="results" n="03 — Results and next steps" title="Measure the change."><p>{solution}</p><p>Next step: validate the workflow with the people who use it and expand only when the evidence supports it.</p></CaseSection></article></div></main><footer>© 2026 Pranav Narasimhan · Next case study</footer></Shell>; }
+
 function Skills() { return <section className="section container" id="skills"><SectionHeading eyebrow="// how I work" title={<>How I <em>work</em></>}/><div className="skills-grid">{[['Product', ['Problem decomposition', 'Metrics & guardrails', 'PRDs/specs', 'User research']], ['Technical', ['Python', 'SQL', 'REST APIs', 'Webhooks']], ['Tools', ['Figma', 'Jira', 'Power BI']]].map(([title, items]) => <div className="skill-group" key={title}><h3>{title}</h3><div>{items.map(item => <Badge key={item}>{item}</Badge>)}</div></div>)}</div></section>; }
 
 function Contact() { return <section className="contact section" id="contact"><div className="container"><SectionHeading eyebrow="// say hello" title={<>Let's <em>connect</em></>}/><p>Open to Associate Product Manager roles.</p><div className="contact-links"><a href="mailto:pranav.n2535@gmail.com"><Mail size={17}/>pranav.n2535@gmail.com</a><a href="tel:+917660874948"><Phone size={17}/>+91 7660874948</a><a href="https://www.linkedin.com/in/pranav-narasimhan-33a631255" target="_blank" rel="noreferrer"><ArrowUpRight size={17}/>LinkedIn</a><a href="/Pranav_N_Resume.pdf" download><Download size={17}/>Download Resume</a></div></div></section>; }
@@ -72,9 +80,14 @@ function App() {
   const isSpotlight = path.endsWith('/spotlight.html') || params.get('page') === 'spotlight';
   const project = params.get('project');
   const isProject = params.get('page') === 'project' || Boolean(project);
+  const pathRoute = path.replace(/^\//, '').replace(/\/$/, '');
+  const workSlug = pathRoute.startsWith('work/') ? pathRoute.split('/')[1] : null;
+  const caseSlug = pathRoute.startsWith('cases/') ? pathRoute.split('/')[1] : null;
   useEffect(() => {
     if (!isSpotlight && params.get('section') === 'projects') requestAnimationFrame(() => document.getElementById('projects')?.scrollIntoView());
   }, [isSpotlight, params]);
-  return isSpotlight ? <Spotlight/> : isProject ? <ProjectDetail project={project || 'tripzy'}/> : <Home/>;
+  if (pathRoute === 'resume') return <Shell><main className="case-page container"><article className="case-content"><h1>Resume</h1><p className="hero-lede">Download my current resume.</p><a className="btn btn-primary" href="/Pranav_N_Resume.pdf">Open resume <ArrowUpRight size={16}/></a></article></main></Shell>;
+  return isSpotlight ? <Spotlight/> : isProject ? <ProjectDetail project={project || 'tripzy'}/> : workSlug ? <WorkPage slug={workSlug}/> : caseSlug ? <ProjectDetail project={caseSlug}/> : <Home/>;
 }
 createRoot(document.getElementById('root')).render(<App/>);
+
