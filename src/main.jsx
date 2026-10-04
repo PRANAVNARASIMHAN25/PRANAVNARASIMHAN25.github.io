@@ -48,14 +48,22 @@ const projects = [
   ['02', 'Marketplace · Product Strategy', 'FoodSwift: Fulfillment Reliability', 'Numbers from a provided case brief: Orders/Month 3.2→2.8 and NPS 42→35; post-confirmation cancellations drive silent churn.', 'Prioritize fulfillment reliability by reducing post-confirmation cancellations over acquisition or discounts.', 'foodswift'],
   ['03', 'Campus Ops · Product Optimization', 'Library Seat & Book Management System', 'User research identified pain points in the library reservation flow and informed product requirements.', 'Automate booking workflows and shape a campus-wide rollout.', 'library-system']
 ];
-function Projects() { return <section className="section projects-section" id="projects"><div className="container"><SectionHeading eyebrow="// featured projects" title={<>What I've <em>built</em></>}/><div className="project-grid">{projects.map(([num, domain, title, insight, decision, key]) => <Reveal key={key}><article className="project-tile"><span className="project-number">{num}</span><span className="eyebrow">{domain}</span><h3>{title}</h3><Badge>Self-initiated case study</Badge><p><b>Key insight:</b> {insight}</p><p><b>Decision I made:</b> {decision}</p><a className="tile-link" href={`/?page=project&project=${key}`}>View in Detail <ArrowUpRight size={15}/></a></article></Reveal>)}</div></div></section>; }
+const additionalProjects = [
+  ['04', 'Campus · Product Roadmap', 'Findster: Campus Lost & Found App', 'Research included 30+ surveys and 8 interviews.', 'Make photo search, categories, and real-time alerts the core MVP.', 'findster'],
+  ['05', 'FMCG · GTM Strategy', 'Biphasic Cosmetic Product', 'Performed market analysis to identify target segments and competitor positioning.', 'Built a go-to-market plan across product development, distribution, and marketing.', 'biphasic-cosmetic']
+];
+function ProjectTile({ item }) { const [num, domain, title, insight, decision, key] = item; return <Reveal><article className="project-tile"><span className="project-number">{num}</span><span className="eyebrow">{domain}</span><h3>{title}</h3><Badge>Self-initiated case study</Badge><p><b>Key insight:</b> {insight}</p><p><b>Decision I made:</b> {decision}</p><a className="tile-link" href={`/?page=project&project=${key}`}>View in Detail <ArrowUpRight size={15}/></a></article></Reveal>; }
+function Projects() { return <section className="section projects-section" id="projects"><div className="container"><SectionHeading eyebrow="// featured projects" title={<>What I've <em>built</em></>}/><div className="project-grid">{projects.map(item => <ProjectTile key={item[5]} item={item}/>)}</div><a className="btn btn-secondary" href="/projects.html" style={{marginTop:'28px'}}>View all Projects <ArrowUpRight size={15}/></a></div></section>; }
 
 const projectDetails = {
   tripzy: ['Tripzy: Travel Planning', 'Travel · Product Strategy', 'Defined a decision-first travel recommendation platform to reduce choice overload and help groups align on a destination.', 'docs/Tripzy_PRD_Document.pdf', 'docs/Tripzy_PM_Slides.pdf'],
   foodswift: ['FoodSwift: Fulfillment Reliability', 'Marketplace · Product Strategy', 'Numbers from a provided case brief: Orders/Month 3.2→2.8 and NPS 42→35. Identified post-confirmation cancellations as a driver of silent churn and proposed reliability-first interventions.', 'docs/FoodSwift_PRD.pdf', 'docs/FoodSwift_PM_Slides.pdf'],
+  findster: ['Findster: Campus Lost & Found App', 'Campus · Product Roadmap', 'Research included 30+ surveys and 8 interviews. Built a campus lost and found concept around photo search, categories, and real-time alerts.', 'docs/Findster_Enhanced_PRD.pdf', 'docs/Findster_Enhanced_PPT.pdf'],
   'library-system': ['Library Seat & Book Management System', 'Campus Ops · Product Optimization', 'Conducted user research to identify pain points in the library reservation flow, defined actionable product requirements, and analyzed feature adoption metrics to drive data-informed improvements. Collaborated cross-functionally to automate booking workflows and shape a campus-wide rollout.', 'docs/LibSeat_PRD_Document.pdf', 'docs/LibSeat_PRD (1).pdf'],
+  'biphasic-cosmetic': ['Biphasic Cosmetic Product', 'FMCG · GTM Strategy', 'Performed market analysis to identify target segments and competitor positioning, then converted insights into product differentiation and brand strategy.', 'docs/Sylver_PRD_Final.pdf', 'docs/Sylver_PM_Slides.pdf'],
 };
 function ProjectDetail({ project }) { const [title, domain, description, prd, slides] = projectDetails[project] || projectDetails.tripzy; return <Shell><main className="case-page container"><article className="case-content detail-page"><a className="text-link" href="/?section=projects">← Back to Featured Projects</a><span className="eyebrow">{domain}</span><h1>{title}</h1><Badge>Self-initiated case study</Badge><p className="hero-lede">{description}</p><div className="detail-links"><a className="btn btn-primary" href={`/${prd}`} target="_blank" rel="noreferrer">View PRD <ArrowUpRight size={16}/></a><a className="btn btn-secondary" href={`/${slides}`} target="_blank" rel="noreferrer">View slides <ArrowUpRight size={16}/></a></div></article></main><footer>© 2026 Pranav Narasimhan · Project detail</footer></Shell>; }
+function AllProjects() { return <Shell><main><section className="section projects-section"><div className="container"><SectionHeading eyebrow="// all projects" title={<>More work I've <em>built</em></>}/><div className="project-grid">{[...projects, ...additionalProjects].map(item => <ProjectTile key={item[5]} item={item}/>)}</div></div></section></main><footer>© 2026 Pranav Narasimhan · All projects</footer></Shell>; }
 
 function Skills() { return <section className="section container" id="skills"><SectionHeading eyebrow="// how I work" title={<>How I <em>work</em></>}/><div className="skills-grid">{[['Product', ['Problem decomposition', 'Metrics & guardrails', 'PRDs/specs', 'User research']], ['Technical', ['Python', 'SQL', 'REST APIs', 'Webhooks']], ['Tools', ['Figma', 'Jira', 'Power BI']]].map(([title, items]) => <div className="skill-group" key={title}><h3>{title}</h3><div>{items.map(item => <Badge key={item}>{item}</Badge>)}</div></div>)}</div></section>; }
 
@@ -72,9 +80,10 @@ function App() {
   const isSpotlight = path.endsWith('/spotlight.html') || params.get('page') === 'spotlight';
   const project = params.get('project');
   const isProject = params.get('page') === 'project' || Boolean(project);
+  const isAllProjects = params.get('page') === 'all-projects';
   useEffect(() => {
     if (!isSpotlight && params.get('section') === 'projects') requestAnimationFrame(() => document.getElementById('projects')?.scrollIntoView());
   }, [isSpotlight, params]);
-  return isSpotlight ? <Spotlight/> : isProject ? <ProjectDetail project={project || 'tripzy'}/> : <Home/>;
+  return isSpotlight ? <Spotlight/> : isAllProjects ? <AllProjects/> : isProject ? <ProjectDetail project={project || 'tripzy'}/> : <Home/>;
 }
 createRoot(document.getElementById('root')).render(<App/>);
